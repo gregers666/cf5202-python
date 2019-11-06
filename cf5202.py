@@ -12,8 +12,8 @@ import codecs
 from argparse import ArgumentParser
 
 
-#l.basicConfig(level=l.INFO)
-l.basicConfig(level=l.DEBUG)
+l.basicConfig(level=l.INFO)
+#l.basicConfig(level=l.DEBUG)
 
 class RU5202:
     def __init__(self, dev='/dev/ttyUSB0', baud=57600):
@@ -204,6 +204,7 @@ if __name__ == "__main__":
     parser.add_argument("-sti", "--single_tag_inventory", action="store_true")
     parser.add_argument("-gbd", "--get_buffer_data", action="store_true")
     parser.add_argument("-gri", "--get_reader_information", action="store_true")
+    parser.add_argument("-con", "--continuous_reading", action="store_true")
     
     args = parser.parse_args()
     
@@ -243,4 +244,10 @@ if __name__ == "__main__":
     if args.get_reader_information:
         print(reader.get_reader_information())
 
-    
+    if args.continuous_reading:
+        while 1:
+            odp = reader.inventory(outData='0e00000000')
+            print(odp)
+            print(odp['epc_id'])
+            print(codecs.decode(odp['epc_id'], 'hex'))
+
