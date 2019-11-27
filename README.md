@@ -19,3 +19,5 @@ optional arguments:<br>
   -sti, --single_tag_inventory<br>
   -gbd, --get_buffer_data<br>
   -gri, --get_reader_information<br> 
+
+pip install crcmod pyserial coreapi
