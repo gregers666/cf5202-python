@@ -171,9 +171,9 @@ class RU5202:
         string should be even or space will be added
         """
         l.debug('# write_epc %s' % wepc)
+        wepc = codecs.encode(bytes(wepc, 'utf-8'), 'hex').decode("utf-8")
         if len(wepc)%2 == 1:
             wepc = wepc + ' '
-        wepc = codecs.encode(bytes(wepc, 'utf-8'), 'hex').decode("utf-8")
         l.debug('wepc %s, len(wepc)= %s' % (wepc, len(wepc)))
         #enum = len(wepc)//4 + int((len(wepc) / 2) % 2) # if odd add 1
         enum = (3+len(wepc))//4
@@ -249,5 +249,5 @@ if __name__ == "__main__":
             odp = reader.inventory(outData='0e00000000')
             print(odp)
             print(odp['epc_id'])
-            print(codecs.decode(odp['epc_id'], 'hex'))
+            print(codecs.decode(odp['epc_id'], 'hex').decode('utf-8'))
 
