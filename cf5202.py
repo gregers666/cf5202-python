@@ -249,5 +249,8 @@ if __name__ == "__main__":
             odp = reader.inventory(outData='0e00000000')
             print(odp)
             print(odp['epc_id'])
-            print(codecs.decode(odp['epc_id'], 'hex').decode('utf-8'))
+            try:
+                print(codecs.decode(odp['epc_id'], 'hex').decode('utf-8'))
+            except:
+                print('Non UTF-8 characters in string!')
 
