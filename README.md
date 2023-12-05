@@ -1,4 +1,5 @@
 # cf5202-python
+Chafon RFID reader
 
 usage: cf5202.py [-h] [-bs {00,01}] [-we WRITE_EPC] [-i] [-srp SET_RF_POWER]
                  [-cb] [-rd] [-bi] [-er] [-sti] [-gbd] [-gri]
